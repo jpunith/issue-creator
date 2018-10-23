@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="alert hide alert-message" role="alert">
+    </div>
+    <div class="container">
+        <div class="card">
+            <h5 class="card-header">
+                Issue creator
+            </h5>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" aria-describedby="userdesc" placeholder="Enter Username">
+                    <small id="userdesc" class="form-text text-muted">Please enter the user name</small>
+                </div>
+                <button type="button" class="btn btn-primary get-repos">Get Repos</button>
+            </div>
+            <ul class="list-group list-group-flush repo-list">
+            </ul>
+            <!-- <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div> -->
+          </div>
+    </div>
+    <div class="modal fade" id="formIssueModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Enter password">
+                            <div class="invalid-tooltip">
+                                Please provide Password.
+                            </div>
+                            <small id="passwordHelp" class="form-text text-muted">Please entert the password.</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter Title">
+                            <small id="titleHelp" class="form-text text-muted">Please entert the title.</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="body">Body</label>
+                            <input type="text" class="form-control" id="body" aria-describedby="bodyHelp" placeholder="Enter body">
+                            <small id="bodyHelp" class="form-text text-muted">Please entert the issue body</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="milestone">Milestone</label>
+                            <input type="number" class="form-control" id="milestone" aria-describedby="milestoneHelp" placeholder="Enter milestone">
+                            <small id="milestoneHelp" class="form-text text-muted">Please entert the issue milestone</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="labels">Labels</label>
+                            <input type="text" class="form-control" id="labels" aria-describedby="labelsHelp" placeholder="Enter labels">
+                            <small id="labelsHelp" class="form-text text-muted">Please entert the issue labels separated by comma</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="assignees">assignees</label>
+                            <input type="text" class="form-control" id="assignees" aria-describedby="assigneesHelp" placeholder="Enter assignees">
+                            <small id="assigneesHelp" class="form-text text-muted">Please entert the issue assignees separated by comma</small>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary create-issue">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

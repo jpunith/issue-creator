@@ -1,0 +1,14 @@
+.container {
+    margin-top: 30px;
+}
+
+.modal-body .col-md-6 {
+    margin-bottom: 30px;
+}
+
+.alert-message {
+    position: fixed;
+    top: 30px;
+    z-index: 1051;
+    right: 60px;
+}
