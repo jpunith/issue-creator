@@ -14,13 +14,18 @@
                 var template = '';
                 template += data.map(function(repo){
                     return '<li class="list-group-item">'+
-                            repo.name + '<a href="#" class="card-link" data-reponame="'+repo.name+'"> create issue </a></li>'
+                            repo.name + '<a href="#" class="card-link" data-reponame="'+repo.name+'"> New Issue </a></li>'
                 }).join('')
     
                 $('.repo-list').html(template);
             })
             .fail(function(error) {
-                $('.repo-list').html('<li class="list-group-item list-group-item-danger">Some thing went wrong try again</li>');
+                if(error.state() === 'rejected'){
+                    $('.repo-list').html('<li class="list-group-item list-group-item-danger">Request rejected</li>');
+                }
+                setTimeout(function(){
+                    $('.repo-list').html('');
+                },3000)
             })
     }
     
@@ -38,11 +43,9 @@
             parameters.title = $('#title').val().trim();
         }
         if(!$('#password').val()){
+            alertErrorMessage("Please enter the password");
             $('#password').closest('.col-md-6').find('.invalid-tooltip').show();
             return;
-        }
-        else {
-            $('#password').closest('.col-md-6').find('.invalid-tooltip').hide();
         }
         if($('#body').val()){
             parameters.body = $('#body').val().trim();
@@ -70,19 +73,26 @@
             }
         })
         .done(function(data){
-            $('.alert-message').text("successfully created issue Issue number "+ data.responseJSON.number);
-            $('.alert-message').removeClass('alert-danger').addClass('alert-success').fadeIn();
-            setTimeout(function(){
-                $('.alert-message').fadeOut();
-            },3000)
+            alertSuccessMessage("successfully created issue Issue number "+ data.number);
         })
         .fail(function(error){
-            console.log(error.responseJSON)
-            $('.alert-message').text(error.responseJSON.message);
-            $('.alert-message').removeClass('alert-success').addClass('alert-danger').fadeIn();
-            setTimeout(function(){
-                $('.alert-message').fadeOut();
-            },3000)
+            alertErrorMessage(error.responseJSON.message);
         })
+    }
+
+    function alertSuccessMessage(msg){
+        $('.alert-message').text(msg);
+        $('.alert-message').removeClass('alert-danger').addClass('alert-success').fadeIn();
+        setTimeout(function(){
+            $('.alert-message').fadeOut();
+        },3000)
+    }
+
+    function alertErrorMessage(msg){
+        $('.alert-message').text(msg);
+        $('.alert-message').removeClass('alert-success').addClass('alert-danger').fadeIn();
+        setTimeout(function(){
+            $('.alert-message').fadeOut();
+        },3000)
     }
 })()
