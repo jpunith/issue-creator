@@ -13,8 +13,8 @@
             .done((data) => {
                 let template = '';
                 template += data.map(function(repo){
-                    return '<li class="list-group-item">'+
-                            repo.name + '<a href="https://github.com/jpunith/'+repo.name+'/issues/new" class="card-link" > New Issue </a></li>'
+                    return `<li class="list-group-item">
+                            ${repo.name} <a href="https://github.com/${userName}/${repo.name}/issues/new" class="card-link" > New Issue </a></li>`;
                 }).join('')
     
                 $('.repo-list').html(template);
